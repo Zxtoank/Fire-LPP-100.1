@@ -1,0 +1,15 @@
+# This file configures the build and deployment settings for Netlify.
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # This command builds the Next.js application for production.
+  command = "next build"
+  
+  # This is the directory that contains the built assets.
+  publish = ".next"
+
+[[plugins]]
+  # This essential plugin automatically configures your Next.js app 
+  # to work with Netlify's features, including server-side rendering,
+  # API routes, and image optimization.
+  package = "@netlify/plugin-nextjs"
