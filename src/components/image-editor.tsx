@@ -31,45 +31,62 @@ const PRINT_HEIGHT_PX = PRINT_HEIGHT_IN * PRINT_DPI_PREVIEW;
 const drawHeart = (ctx: CanvasRenderingContext2D, cx: number, y: number, width: number, height: number) => {
     ctx.save();
     ctx.beginPath();
+
+    // This path is based on the user-provided SVG, scaled to the target dimensions.
+    // It has been made symmetrical for a cleaner appearance.
+    const svgW = 32;
+    const svgH = 29.6;
+    const scaleX = width / svgW;
+    const scaleY = height / svgH;
+    const offsetX = cx - width / 2;
+    const offsetY = y;
+
+    // Helper to transform SVG coordinates to canvas coordinates
+    const t = (svgX: number, svgY: number) => ({
+        x: svgX * scaleX + offsetX,
+        y: svgY * scaleY + offsetY,
+    });
+
+    // Start at the bottom tip of the heart
+    let p = t(16, 29.6);
+    ctx.moveTo(p.x, p.y);
+
+    // Left side curve up
+    let p1 = t(4.2, 17.2);
+    let p2 = t(0, 13.3);
+    let p3 = t(0, 8.4);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+
+    // Left top lobe
+    p1 = t(0, 3.8);
+    p2 = t(3.8, 0);
+    p3 = t(8.4, 0);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+
+    // Left dip to center
+    p1 = t(11.8, 0);
+    p2 = t(14.8, 2.1);
+    p3 = t(16, 5.1);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+
+    // Right dip from center (mirrored)
+    p1 = t(17.2, 2.1);
+    p2 = t(20.2, 0);
+    p3 = t(23.6, 0);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+
+    // Right top lobe (mirrored)
+    p1 = t(28.2, 0);
+    p2 = t(32, 3.8);
+    p3 = t(32, 8.4);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+
+    // Right side curve down to tip (mirrored)
+    p1 = t(32, 13.3);
+    p2 = t(27.8, 17.2);
+    p3 = t(16, 29.6);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
     
-    const topCurveHeight = height * 0.3;
-    const topY = y;
-    const bottomY = y + height;
-    const topDipY = y + topCurveHeight;
-    const leftX = cx - width / 2;
-    const rightX = cx + width / 2;
-
-    // Start at the bottom point
-    ctx.moveTo(cx, bottomY);
-
-    // Curve up to the left side
-    ctx.bezierCurveTo(
-      cx - width * 0.1, y + height * 0.75, // cp1
-      leftX, y + height * 0.5,             // cp2
-      leftX, topDipY                       // end point
-    );
-
-    // Top left lobe
-    ctx.bezierCurveTo(
-      leftX, y,                            // cp1
-      cx, y,                               // cp2
-      cx, topDipY                          // end point
-    );
-
-    // Top right lobe
-    ctx.bezierCurveTo(
-      cx, y,                               // cp1
-      rightX, y,                           // cp2
-      rightX, topDipY                      // end point
-    );
-
-    // Curve down to bottom
-    ctx.bezierCurveTo(
-      rightX, y + height * 0.5,            // cp1
-      cx + width * 0.1, y + height * 0.75, // cp2
-      cx, bottomY                          // end point
-    );
-
     ctx.closePath();
     ctx.restore();
 };
