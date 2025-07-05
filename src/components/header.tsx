@@ -23,13 +23,13 @@ export function Header() {
   };
 
   return (
-    <header className="p-4 border-b shrink-0 flex justify-between items-center bg-card">
-      <Link href="/">
-        <h1 className="text-2xl font-bold text-center text-primary cursor-pointer">
+    <header className="p-2 sm:p-4 border-b shrink-0 flex justify-between items-center bg-card">
+      <Link href="/" className="min-w-0">
+        <h1 className="text-xl sm:text-2xl font-bold text-primary cursor-pointer truncate">
           Locket Photo Print
         </h1>
       </Link>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 flex-shrink-0">
         {user ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -54,8 +54,8 @@ export function Header() {
           </DropdownMenu>
         ) : (
           <div className="flex gap-2">
-            <Button variant="ghost" onClick={() => router.push('/login')}>Log In</Button>
-            <Button onClick={() => router.push('/signup')}>Sign Up</Button>
+            <Button variant="ghost" onClick={() => router.push('/login')} className="px-3 sm:px-4">Log In</Button>
+            <Button onClick={() => router.push('/signup')} className="px-3 sm:px-4">Sign Up</Button>
           </div>
         )}
       </div>
