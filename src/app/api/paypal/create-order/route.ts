@@ -9,6 +9,10 @@ async function getPayPalAccessToken() {
         console.error("MISSING_PAYPAL_API_CREDENTIALS: Make sure PAYPAL_CLIENT_SECRET and NEXT_PUBLIC_PAYPAL_CLIENT_ID are set in your environment variables.");
         throw new Error("PayPal API credentials are not configured on the server.");
     }
+
+    // Log that we are attempting to authenticate, showing a masked version of the client ID.
+    console.log(`Attempting PayPal auth with Client ID ending in ...${PAYPAL_CLIENT_ID.slice(-4)}`);
+
     const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_CLIENT_SECRET}`).toString('base64');
     const response = await fetch(`${base}/v1/oauth2/token`, {
         method: 'POST',
@@ -21,21 +25,25 @@ async function getPayPalAccessToken() {
     
     if (!response.ok) {
         const errorBody = await response.text();
+        // Log the detailed error from PayPal on the server for debugging.
+        console.error("PayPal API Error Response:", errorBody);
+        
         try {
             const errorJson = JSON.parse(errorBody);
             if (errorJson.error === 'invalid_client') {
-                console.error("PayPal authentication failed: 'invalid_client'. This is likely due to incorrect PAYPAL_CLIENT_ID or PAYPAL_CLIENT_SECRET environment variables in your deployment environment (e.g., Netlify).");
-                throw new Error("PayPal client authentication failed. Please check server configuration.");
+                 console.error("PayPal authentication failed: 'invalid_client'. This is almost always due to an incorrect PAYPAL_CLIENT_ID or PAYPAL_CLIENT_SECRET in your environment variables.");
+                 throw new Error("PayPal client authentication failed. Please check server configuration and credentials.");
             }
         } catch (e) {
             // Not a JSON error or different structure, fall through
         }
-        // Log the raw error for debugging but don't expose it to the client
-        console.error("Failed to get PayPal access token:", errorBody);
-        throw new Error(`Failed to get access token from PayPal.`);
+        
+        // Generic error for the client
+        throw new Error(`Failed to get access token from PayPal. Check server logs for details.`);
     }
 
     const data = await response.json();
+    console.log("Successfully obtained PayPal access token.");
     return data.access_token;
 }
 
@@ -88,8 +96,8 @@ export async function POST(request: Request) {
         const order = await createPayPalOrder(amount, description, !!requiresShipping);
         return NextResponse.json(order);
     } catch (error) {
-        // The console.error calls are now inside the helper functions for more specific context.
         const message = error instanceof Error ? error.message : "An unknown error occurred";
+        // The console.error calls are now inside the helper functions for more specific context.
         return NextResponse.json({ error: message }, { status: 500 });
     }
 }
