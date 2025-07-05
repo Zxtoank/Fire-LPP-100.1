@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 215 28% 17%;
+    --background: 210 40% 98%; /* Very light cool gray */
+    --foreground: 215 28% 17%; /* Dark blue-gray */
     --card: 0 0% 100%;
     --card-foreground: 215 28% 17%;
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 17%;
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
+    --primary: 260 80% 75%; /* Light Purple */
+    --primary-foreground: 215 28% 17%; /* Dark text for contrast on light purple */
+    --secondary: 210 40% 96%; /* Lighter cool gray */
     --secondary-foreground: 215 28% 17%;
     --muted: 210 40% 96%;
     --muted-foreground: 215 20% 45%;
-    --accent: 158 79% 44%;
+    --accent: 260 83% 63%; /* A vibrant purple for accents */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --ring: 260 80% 75%; /* Light Purple */
     --radius: 0.8rem;
   }
  
@@ -33,19 +33,19 @@
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 260 70% 72%; /* Light Purple for dark mode */
+    --primary-foreground: 0 0% 98%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
-    --accent: 158 64% 52%;
+    --accent: 260 83% 63%; /* A vibrant purple for accents */
     --accent-foreground: 222 47% 11%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
     --border: 217 33% 17%;
     --input: 217 33% 17%;
-    --ring: 217 91% 60%;
+    --ring: 260 70% 72%; /* Light Purple for dark mode */
   }
 }
 
