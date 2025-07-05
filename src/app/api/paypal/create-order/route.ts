@@ -1,8 +1,13 @@
+
 import { NextResponse } from 'next/server';
 
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
-const base = 'https://api-m.sandbox.paypal.com';
+
+// Use the live URL if PAYPAL_MODE is 'live', otherwise default to sandbox
+const base = process.env.PAYPAL_MODE === 'live'
+    ? 'https://api-m.paypal.com'
+    : 'https://api-m.sandbox.paypal.com';
 
 async function getPayPalAccessToken() {
     if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
@@ -11,7 +16,7 @@ async function getPayPalAccessToken() {
     }
 
     // Log that we are attempting to authenticate, showing a masked version of the client ID.
-    console.log(`Attempting PayPal auth with Client ID ending in ...${PAYPAL_CLIENT_ID.slice(-4)}`);
+    console.log(`Attempting PayPal auth with Client ID ending in ...${PAYPAL_CLIENT_ID.slice(-4)} for ${process.env.PAYPAL_MODE || 'sandbox'} environment.`);
 
     const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_CLIENT_SECRET}`).toString('base64');
     const response = await fetch(`${base}/v1/oauth2/token`, {
