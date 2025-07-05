@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -76,7 +77,25 @@ export function AuthForm({ isSignUp }: { isSignUp: boolean }) {
       router.push("/");
       toast({ title: "Success!", description: "You are now logged in with Google." });
     } catch (error: any) {
-      toast({ variant: "destructive", title: "Google Sign-In Error", description: error.message });
+      let description = error.message;
+      switch (error.code) {
+        case 'auth/operation-not-allowed':
+          description = "Google Sign-In is not enabled for this app. Please enable it in your Firebase console's Authentication section.";
+          break;
+        case 'auth/unauthorized-domain':
+          description = "This website's domain is not authorized for Google Sign-In. Please add it to the authorized domains in your Firebase and Google Cloud consoles.";
+          break;
+        case 'auth/popup-blocked-by-browser':
+           description = "The sign-in pop-up was blocked by your browser. Please allow pop-ups for this site and try again.";
+           break;
+        case 'auth/popup-closed-by-user':
+           description = "The sign-in window was closed before completing. Please try again.";
+           break;
+        default:
+           description = "An unexpected error occurred during Google Sign-In. Please check your configuration.";
+           break;
+      }
+      toast({ variant: "destructive", title: "Google Sign-In Error", description });
     } finally {
       setIsGoogleLoading(false);
     }
