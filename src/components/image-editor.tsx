@@ -735,35 +735,35 @@ export default function ImageEditor() {
             <div className="flex flex-col items-center gap-2 border-b pb-4">
               <p className="text-sm font-medium text-muted-foreground">Crop Shape</p>
               <div className="flex flex-wrap gap-2 justify-center">
-                 <Button variant={cropShape === 'square' ? 'secondary' : 'outline'} size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={() => setCropShape('square')}> <Square /> </Button>
-                 <Button variant={cropShape === 'circle' ? 'secondary' : 'outline'} size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={() => setCropShape('circle')}> <Circle /> </Button>
-                 <Button variant={cropShape === 'heart' ? 'secondary' : 'outline'} size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={() => setCropShape('heart')}> <Heart /> </Button>
-                 <Button variant={cropShape === 'oval' ? 'secondary' : 'outline'} size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={() => setCropShape('oval')}> <OvalIcon className="w-6 h-6" /> </Button>
+                 <Button variant={cropShape === 'square' ? 'secondary' : 'outline'} size="icon" className="text-primary" onClick={() => setCropShape('square')}> <Square /> </Button>
+                 <Button variant={cropShape === 'circle' ? 'secondary' : 'outline'} size="icon" className="text-primary" onClick={() => setCropShape('circle')}> <Circle /> </Button>
+                 <Button variant={cropShape === 'heart' ? 'secondary' : 'outline'} size="icon" className="text-primary" onClick={() => setCropShape('heart')}> <Heart /> </Button>
+                 <Button variant={cropShape === 'oval' ? 'secondary' : 'outline'} size="icon" className="text-primary" onClick={() => setCropShape('oval')}> <OvalIcon className="w-6 h-6" /> </Button>
               </div>
             </div>
             <TooltipProvider>
                 <div className="flex flex-wrap gap-2 justify-center">
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button variant="outline" size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={() => handleZoom('in')}><ZoomIn /></Button>
+                            <Button variant="outline" size="icon" className="text-primary" onClick={() => handleZoom('in')}><ZoomIn /></Button>
                         </TooltipTrigger>
                         <TooltipContent><p>Zoom In</p></TooltipContent>
                     </Tooltip>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button variant="outline" size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={() => handleZoom('out')}><ZoomOut /></Button>
+                            <Button variant="outline" size="icon" className="text-primary" onClick={() => handleZoom('out')}><ZoomOut /></Button>
                         </TooltipTrigger>
                         <TooltipContent><p>Zoom Out</p></TooltipContent>
                     </Tooltip>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button variant="outline" size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={handleReset}><RefreshCw /></Button>
+                            <Button variant="outline" size="icon" className="text-primary" onClick={handleReset}><RefreshCw /></Button>
                         </TooltipTrigger>
                         <TooltipContent><p>Reset</p></TooltipContent>
                     </Tooltip>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button variant="outline" size="icon" className="bg-primary/10 text-primary hover:bg-primary/20" onClick={handleUploadClick}><Replace /></Button>
+                            <Button variant="outline" size="icon" className="text-primary" onClick={handleUploadClick}><Replace /></Button>
                         </TooltipTrigger>
                         <TooltipContent><p>Change Image</p></TooltipContent>
                     </Tooltip>
