@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   title: 'Locket Photo Print',
   description: 'Upload and prepare your photos for printing.',
   manifest: '/manifest.json',
+  icons: {
+    icon: '/icons/icon-192x192.png',
+    apple: '/icons/icon-192x192.png',
+  },
 };
 
 export default function RootLayout({
