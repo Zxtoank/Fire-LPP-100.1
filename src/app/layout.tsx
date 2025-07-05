@@ -2,9 +2,18 @@ import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/context/AuthContext';
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Belleza, Alegreya } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const belleza = Belleza({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-belleza',
+});
+
+const alegreya = Alegreya({
+  subsets: ['latin'],
+  variable: '--font-alegreya',
+});
 
 export const metadata: Metadata = {
   title: 'Locket Photo Print',
@@ -18,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans ${inter.variable} antialiased`}>
+      <body className={`${belleza.variable} ${alegreya.variable} font-serif antialiased`}>
         <AuthProvider>
           {children}
           <Toaster />
