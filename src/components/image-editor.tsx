@@ -850,19 +850,19 @@ export default function ImageEditor() {
                                   </div>
                               </Card>
                               {/* 1200DPI PNG */}
-                              <Card className="p-4 border-yellow-400 border-2 bg-yellow-50 relative space-y-3">
+                              <Card className="p-4 border-yellow-200 border bg-yellow-50/50 relative space-y-3">
                                   <div className="flex items-start justify-between">
                                       <div className="flex items-center gap-3">
-                                         <FileText className="text-yellow-600 w-5 h-5" />
+                                         <FileText className="text-yellow-500 w-5 h-5" />
                                           <div>
                                               <h4 className="font-semibold">1200DPI PNG</h4>
                                               <p className="text-sm text-muted-foreground mt-1">Ultra-high resolution</p>
                                           </div>
                                       </div>
                                       <div className="flex items-center gap-2">
-                                        <span className="text-sm font-bold bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">$4.99</span>
+                                        <span className="text-sm font-bold bg-yellow-200/70 text-yellow-900 px-2 py-0.5 rounded-full">$4.99</span>
                                         <Button variant="ghost" size="icon" onClick={() => toast({description: "Please use the PayPal button below to purchase."})}>
-                                            <Download className="text-yellow-600"/>
+                                            <Download className="text-yellow-500"/>
                                         </Button>
                                       </div>
                                       <div className="absolute -top-3 -right-3 text-xs font-bold text-orange-900 w-7 h-7 flex items-center justify-center rounded-full border-2 border-white shadow-lg bg-gradient-to-tr from-yellow-400 to-orange-400">
@@ -877,19 +877,19 @@ export default function ImageEditor() {
                                   </div>
                               </Card>
                               {/* 1200DPI PDF */}
-                              <Card className="p-4 border-yellow-400 border-2 bg-yellow-50 relative space-y-3">
+                              <Card className="p-4 border-yellow-200 border bg-yellow-50/50 relative space-y-3">
                                   <div className="flex items-start justify-between">
                                       <div className="flex items-center gap-3">
-                                          <FileText className="text-yellow-600 w-5 h-5" />
+                                          <FileText className="text-yellow-500 w-5 h-5" />
                                           <div>
                                               <h4 className="font-semibold">1200DPI PDF</h4>
                                               <p className="text-sm text-muted-foreground mt-1">Professional print quality</p>
                                           </div>
                                       </div>
                                        <div className="flex items-center gap-2">
-                                        <span className="text-sm font-bold bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">$4.99</span>
+                                        <span className="text-sm font-bold bg-yellow-200/70 text-yellow-900 px-2 py-0.5 rounded-full">$4.99</span>
                                         <Button variant="ghost" size="icon" onClick={() => toast({description: "Please use the PayPal button below to purchase."})}>
-                                            <Download className="text-yellow-600"/>
+                                            <Download className="text-yellow-500"/>
                                         </Button>
                                       </div>
                                       <div className="absolute -top-3 -right-3 text-xs font-bold text-orange-900 w-7 h-7 flex items-center justify-center rounded-full border-2 border-white shadow-lg bg-gradient-to-tr from-yellow-400 to-orange-400">
@@ -908,8 +908,8 @@ export default function ImageEditor() {
 
                       {/* Physical Prints */}
                       <div className="pt-4">
-                          <SectionHeader icon={<Package className="text-green-600" />} title="Physical Prints" />
-                          <Card className="p-6 mt-4 border-green-300 border-2 bg-green-50/50 flex flex-col md:flex-row items-center justify-between gap-4">
+                          <SectionHeader icon={<Package className="text-green-500" />} title="Physical Prints" />
+                          <Card className="p-6 mt-4 border-green-200 border bg-green-50/50 flex flex-col md:flex-row items-center justify-between gap-4">
                               <div>
                                   <h4 className="font-semibold text-lg">Professional Photo Prints</h4>
                                   <p className="text-muted-foreground mt-1">Get your custom locket photos printed on high-quality photo paper and delivered to your door.</p>
@@ -922,7 +922,7 @@ export default function ImageEditor() {
                               <div className="text-center md:text-right flex-shrink-0">
                                   <p className="text-3xl font-bold text-green-700">$7.99</p>
                                   <p className="text-sm text-muted-foreground">per print</p>
-                                  <Button className="mt-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white" size="lg" onClick={handleOrderPhysicalClick} disabled={!user}>
+                                  <Button className="mt-4 bg-emerald-500 hover:bg-emerald-600 text-white" size="lg" onClick={handleOrderPhysicalClick} disabled={!user}>
                                       <Package className="mr-2"/> Order Physical Prints
                                   </Button>
                               </div>
@@ -931,11 +931,11 @@ export default function ImageEditor() {
 
                       {/* Upgrade to Premium */}
                        <div className="pt-4">
-                          <SectionHeader icon={<Star className="text-purple-600" />} title="Upgrade to Premium" />
-                          <Card className="p-6 mt-4 border-purple-300 border-2 bg-purple-50/50 flex flex-col md:flex-row items-center justify-between gap-4">
+                          <SectionHeader icon={<Star className="text-purple-500" />} title="Upgrade to Premium" />
+                          <Card className="p-6 mt-4 border-purple-200 border bg-purple-50/50 flex flex-col md:flex-row items-center justify-between gap-4">
                               <div className="flex items-center gap-4">
                                   <div className="bg-purple-100 p-3 rounded-full">
-                                      <Star className="text-purple-600 w-8 h-8"/>
+                                      <Star className="text-purple-500 w-8 h-8"/>
                                   </div>
                                   <div>
                                       <h4 className="font-semibold text-lg">Unlimited Downloads & More</h4>
@@ -944,7 +944,7 @@ export default function ImageEditor() {
                               </div>
                               <div className="text-center md:text-right flex-shrink-0">
                                   <p className="text-3xl font-bold text-purple-700">$9.99<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
-                                  <Button className="mt-2 bg-gradient-to-r from-violet-500 to-indigo-500 text-white" size="lg" onClick={() => handleFeatureClick('Premium Plans')}>
+                                  <Button className="mt-2 bg-violet-500 hover:bg-violet-600 text-white" size="lg" onClick={() => handleFeatureClick('Premium Plans')}>
                                       <Star className="mr-2"/> View Plans
                                   </Button>
                               </div>
