@@ -172,8 +172,9 @@ export default function CheckoutPage() {
 
   const onError = useCallback((err: any) => {
     console.error("PayPal Error:", err);
-    toast({ variant: "destructive", title: "PayPal Error", description: "An unexpected error occurred with PayPal. Please try again." });
+    toast({ variant: "destructive", title: "PayPal Error", description: "A PayPal script error occurred. This is often due to an incorrect Client ID. Please double-check your credentials." });
   }, [toast]);
+
 
   if (loading || !user || !printPreviewUrl) {
     return <div className="flex items-center justify-center h-screen"><Spinner className="w-12 h-12" /></div>;

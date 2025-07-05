@@ -638,7 +638,7 @@ export default function ImageEditor() {
 
   const onError = useCallback((err: any) => {
     console.error("PayPal Error:", err);
-    toast({ variant: "destructive", title: "PayPal Error", description: "An unexpected error occurred with PayPal. Please try again." });
+    toast({ variant: "destructive", title: "PayPal Error", description: "A PayPal script error occurred. This is often due to an incorrect Client ID. Please double-check your credentials." });
   }, [toast]);
   
   const handleOrderPhysicalClick = useCallback(() => {
