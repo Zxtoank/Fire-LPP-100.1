@@ -1,4 +1,3 @@
-
 import { NextResponse } from 'next/server';
 
 const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
